@@ -1,0 +1,23 @@
+<annotation>
+    <folder>images</folder>
+    <filename>digicode_5.jpg</filename>
+    <size>
+        <width>1411</width>
+        <height>1347</height>
+        <depth>3</depth>
+    </size>
+    <segmented>0</segmented>
+    <object>
+        <name>digicode</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <occluded>0</occluded>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>717</xmin>
+            <ymin>728</ymin>
+            <xmax>899</xmax>
+            <ymax>1238</ymax>
+        </bndbox>
+    </object>
+</annotation>
