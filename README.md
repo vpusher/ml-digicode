@@ -3,7 +3,7 @@
 ## Create TF Record
 
 docker-compose up -d
-docker exec -it digicodeml_tensorflow_1 bash
+docker exec -it digicode-ml_tensorflow_1 bash
 python convert.py
 docker-compose down
 

@@ -1,5 +1,6 @@
 import tensorflow as tf
 import os
+import io
 
 from object_detection.utils import dataset_util
 from PIL import Image
@@ -12,12 +13,17 @@ flags.DEFINE_string('annotations_path', './annotations', 'Images annotations dir
 FLAGS = flags.FLAGS
 
 def create_tf_example(filepath):
-  img = Image.open(filepath)
+
   basepath, filename = os.path.split(filepath)
 
+  img = Image.open(filepath)
   height = img.height # Image height
   width = img.width # Image width
-  encoded_image_data = img.tobytes() # Encoded image bytes
+  #encoded_image_data = img.tobytes() # Encoded image bytes
+
+  with tf.gfile.GFile(filepath) as fid:
+    encoded_image = fid.read() 
+
   image_format = b'jpg' if filename.lower().endswith(('.jpeg', '.jpg')) else b'png' # b'jpeg' or b'png'
 
   label, xmin, xmax, ymin, ymax = read_example_coordinates(filename)
@@ -36,7 +42,7 @@ def create_tf_example(filepath):
       'image/width': dataset_util.int64_feature(width),
       'image/filename': dataset_util.bytes_feature(filename),
       'image/source_id': dataset_util.bytes_feature(filename),
-      'image/encoded': dataset_util.bytes_feature(encoded_image_data),
+      'image/encoded': dataset_util.bytes_feature(encoded_image),
       'image/format': dataset_util.bytes_feature(image_format),
       'image/object/bbox/xmin': dataset_util.float_list_feature(xmins),
       'image/object/bbox/xmax': dataset_util.float_list_feature(xmaxs),
