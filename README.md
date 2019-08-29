@@ -11,7 +11,7 @@ docker-compose down
 
 https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_locally.md
 
->  From the tensorflow/models/research/ directory:
+>  From the /tensorflow-models/research/ directory:
 
 ```
 python object_detection/train.py \

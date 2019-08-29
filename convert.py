@@ -9,7 +9,7 @@ from lxml import etree
 flags = tf.app.flags
 flags.DEFINE_string('output_path', './data/digicode.record', 'Path to output TFRecord')
 flags.DEFINE_string('images_path', './images', 'Images directory')
-flags.DEFINE_string('annotations_path', './annotations', 'Images annotations directory')
+flags.DEFINE_string('annotations_path', './images/annotations', 'Images annotations directory')
 FLAGS = flags.FLAGS
 
 def create_tf_example(filepath):
